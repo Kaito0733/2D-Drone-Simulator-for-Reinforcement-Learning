@@ -41,7 +41,7 @@ pygame.display.set_caption("2D Drone Simulation for RNN's or Other Applications"
 surface = pygame.display.get_surface()
 WIDTH, HEIGHT = size = surface.get_width(), surface.get_height()
 
-image = pygame.image.load('fancy_drone.png').convert_alpha()
+image = pygame.image.load('2d-drone-simulator-for-reinforcement-learning-main/fancy_drone.png').convert_alpha()
 image = pygame.transform.scale(image, (DRONE_WIDTH + 65, DRONE_HEIGHT + 45))
 
 class Slider:
