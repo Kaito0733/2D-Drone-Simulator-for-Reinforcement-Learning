@@ -60,6 +60,13 @@ class Drone2DSimulator:
         for slider in self.sliders:
             slider.update_value()
 
+    def get_feedback(self):
+        return {"speed_x": self.drone_speed_x,
+                "speed_y": self.drone_speed_y,
+                "angle": self.drone_angle,
+                "position_x": self.drone_x,
+                "position_y": self.drone_y}
+
     def run(self, output):
         thrust_index = 0
         num_thrusts = len(output)
