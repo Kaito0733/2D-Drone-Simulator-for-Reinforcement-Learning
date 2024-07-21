@@ -67,7 +67,7 @@ class Drone2DSimulator:
                 "position_x": self.drone_x,
                 "position_y": self.drone_y}
 
-    def run(self, output):
+    def run(self, output, coo, place):
         thrust_index = 0
         num_thrusts = len(output)
         running = True
@@ -142,6 +142,13 @@ class Drone2DSimulator:
 
             self.screen.fill(self.WHITE)
             pygame.draw.polygon(self.screen, self.BLACK, points)
+
+            if place:
+                pygame.draw.circle(self.screen, (0, 255, 0), coo, 10)
+            else:
+                pygame.draw.circle(self.screen, (255, 255, 255), coo, 10)
+
+            #pygame.display.update()
 
             for pos in thrust_positions:
                 pygame.draw.rect(self.screen, self.RED, (pos[0], pos[1], self.THRUST_WIDTH, self.THRUST_HEIGHT))
