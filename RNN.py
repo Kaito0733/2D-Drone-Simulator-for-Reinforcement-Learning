@@ -8,8 +8,12 @@ def main():
     pygame.display.set_caption("2D Drone Simulation for RNN's or Other Applications")
     #size of each generated sequence of control inputs, outputs frmo RNN
     ss = 5
+    completed_task = False
     #Create Simulation
     sim = Drone2DSimulator()
+
+    result = sim.get_feedback()
+    print(result)
     #Perform Reinforcement learning to generate array of controls
     #Here an example randomly generated, replace for loops with generating RNN outputs:
     RNN_output = np.array([(0, 0)]) #initial array
@@ -22,18 +26,36 @@ def main():
 
     sim.run(RNN_output[:ss])  #Run first generated sequence
 
-    for sequence in range(2000): #for example 2000 more generations of ss controls
+    #further control sequences, generated dynamically, lively:
+    sequence = 0
+    while not completed_task:
+        sequence += 1
+
         keys = pygame.key.get_pressed()
         if keys[pygame.K_ESCAPE]:
             break
 
-        #randomly generate next control sequence array:
+
+
+
+
+
+        #randomly generate next control sequence array
+        # #ACTUALLY REPLACE THIS CODE SNIPEET WITH THE CALCULATION OF THE NEXT CONTROL SEQUENCE FROM THE NEURAL NETWORK BASED ON THE RESULT, INSTEAD OF RANDOMLY GENERATING IT:
         for _ in range(ss):
             random_tuple1 = (np.random.randint(0, 2), np.random.randint(0, 2))
             RNN_output = np.vstack((RNN_output, random_tuple1))
             
-        sim.run(RNN_output[(sequence+1)*ss:])  # Run next sequence
 
+
+
+
+
+
+        sim.run(RNN_output[sequence*ss:])  # Run next sequence
+
+        result = sim.get_feedback()
+        print(result)
 
     # Clean up
     pygame.quit()
