@@ -1,5 +1,6 @@
 # 2D-Drone-Simulator-for-Reinforcement-Learning
-A simple but realistic drone simulator made in pygame, easily implementable in RNN's, offering 6 different parameters to tune while in the simulation and keyboard controls for you to test.
+A simple but realistic drone simulator made in pygame, easily implementable in RNN's, offering 6 different parameters to tune while in the simulation and keyboard controls.
+You can enable radomly spawning target, to train the drone to fly to specific coordinates.
 
 Use main_manual_control_inputs.py to play the simulation with left and right keys by yourself.
 Use example_with_random_inputs.py to see how the drone flies with randomly generated arrays of 0's and 1's, without manual steering from the keyboard.
